@@ -1,0 +1,66 @@
+/* ============================================
+   YouTube Sin Shorts – Modo Enfoque
+   Oculta TODOS los elementos de Shorts
+   ============================================ */
+
+/* --- Pestaña "Shorts" en la barra lateral --- */
+ytd-guide-entry-renderer a[href="/shorts"],
+ytd-mini-guide-entry-renderer a[href="/shorts"] {
+  display: none !important;
+}
+
+/* Contenedor del item en sidebar */
+ytd-guide-entry-renderer:has(a[href="/shorts"]),
+ytd-mini-guide-entry-renderer:has(a[href="/shorts"]) {
+  display: none !important;
+}
+
+/* --- Sección "Shorts" en la página principal --- */
+ytd-rich-section-renderer:has([is-shorts]),
+ytd-rich-section-renderer:has(ytd-rich-shelf-renderer[is-shorts]),
+ytd-reel-shelf-renderer,
+ytd-rich-shelf-renderer[is-shorts] {
+  display: none !important;
+}
+
+/* --- Shorts en resultados de búsqueda --- */
+ytd-reel-item-renderer,
+ytd-video-renderer:has([overlay-style="SHORTS"]),
+ytd-item-section-renderer:has(ytd-reel-shelf-renderer) {
+  display: none !important;
+}
+
+/* --- Shorts en recomendaciones / videos relacionados --- */
+ytd-compact-video-renderer:has([overlay-style="SHORTS"]),
+ytd-grid-video-renderer:has([overlay-style="SHORTS"]) {
+  display: none !important;
+}
+
+/* --- Chips / filtros de Shorts --- */
+yt-chip-cloud-chip-renderer:has([title="Shorts"]) {
+  display: none !important;
+}
+
+/* --- Página de Shorts directamente --- */
+ytd-shorts,
+ytd-shorts-video-renderer,
+ytm-shorts-lockup-view-model,
+ytm-shorts-lockup-view-model-v2,
+ytd-reel-video-renderer {
+  display: none !important;
+}
+
+/* --- Badge/etiqueta "SHORTS" sobre miniaturas --- */
+ytd-thumbnail-overlay-time-status-renderer[overlay-style="SHORTS"] {
+  display: none !important;
+}
+
+/* --- Shelf de shorts en home --- */
+[is-shorts] {
+  display: none !important;
+}
+
+/* Secciones que contienen solo shorts */
+ytd-rich-section-renderer {
+  /* Se maneja dinámicamente por el JS */
+}

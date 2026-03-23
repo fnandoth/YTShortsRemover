@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Sin Shorts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:wght@400;500;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 280px;
+      background: #0a0a0a;
+      color: #f0f0f0;
+      font-family: 'DM Sans', sans-serif;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+      padding: 20px;
+      border-bottom: 1px solid #222;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,60,60,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: #ff3c3c;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+    }
+
+    .logo-sub {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      color: #ff3c3c;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .status-card {
+      margin: 16px;
+      background: #141414;
+      border: 1px solid #1e1e1e;
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #22c55e;
+      box-shadow: 0 0 8px rgba(34,197,94,0.6);
+      flex-shrink: 0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 8px rgba(34,197,94,0.6); }
+      50% { box-shadow: 0 0 16px rgba(34,197,94,0.9); }
+    }
+
+    .status-text {
+      flex: 1;
+    }
+
+    .status-label {
+      font-size: 12px;
+      font-weight: 600;
+      color: #22c55e;
+      letter-spacing: 0.3px;
+    }
+
+    .status-desc {
+      font-size: 11px;
+      color: #555;
+      margin-top: 2px;
+    }
+
+    .blocked-list {
+      margin: 0 16px 16px;
+    }
+
+    .blocked-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: #444;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .blocked-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #161616;
+    }
+
+    .blocked-item:last-child {
+      border-bottom: none;
+    }
+
+    .item-icon {
+      width: 28px;
+      height: 28px;
+      background: #1a1a1a;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      flex-shrink: 0;
+    }
+
+    .item-text {
+      font-size: 12px;
+      color: #888;
+      line-height: 1.3;
+    }
+
+    .item-text strong {
+      color: #ccc;
+      font-weight: 500;
+    }
+
+    .crossed {
+      text-decoration: line-through;
+      color: #ff3c3c !important;
+      opacity: 0.7;
+    }
+
+    .tip {
+      margin: 0 16px 16px;
+      background: rgba(255,60,60,0.06);
+      border: 1px solid rgba(255,60,60,0.15);
+      border-radius: 8px;
+      padding: 10px 12px;
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .tip-icon {
+      font-size: 13px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .tip-text {
+      font-size: 11px;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    .tip-text strong {
+      color: #ff3c3c;
+    }
+
+    .footer {
+      padding: 10px 16px 14px;
+      border-top: 1px solid #141414;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: 'Space Mono', monospace;
+      font-size: 9px;
+      color: #2a2a2a;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <div class="logo">
+      <div class="logo-icon">🚫</div>
+      <div>
+        <div class="logo-text">Sin Shorts</div>
+        <div class="logo-sub">Modo Enfoque</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-card">
+    <div class="status-dot"></div>
+    <div class="status-text">
+      <div class="status-label">Protección Activa</div>
+      <div class="status-desc">Los Shorts están bloqueados en YouTube</div>
+    </div>
+  </div>
+
+  <div class="blocked-list">
+    <div class="blocked-title">Lo que se bloquea</div>
+
+    <div class="blocked-item">
+      <div class="item-icon">🏠</div>
+      <div class="item-text"><strong>Página principal</strong> — Sección de Shorts eliminada</div>
+    </div>
+
+    <div class="blocked-item">
+      <div class="item-icon">🔍</div>
+      <div class="item-text"><strong>Búsquedas</strong> — Resultados de Shorts ocultos</div>
+    </div>
+
+    <div class="blocked-item">
+      <div class="item-icon">📋</div>
+      <div class="item-text"><strong>Recomendados</strong> — Sin Shorts entre los relacionados</div>
+    </div>
+
+    <div class="blocked-item">
+      <div class="item-icon">📂</div>
+      <div class="item-text"><strong>Sidebar</strong> — <span class="crossed">Pestaña Shorts</span> eliminada</div>
+    </div>
+
+    <div class="blocked-item">
+      <div class="item-icon">🔗</div>
+      <div class="item-text"><strong>URLs /shorts</strong> — Redirige a inicio</div>
+    </div>
+  </div>
+
+  <div class="tip">
+    <div class="tip-icon">💡</div>
+    <div class="tip-text">
+      Si recarga la página y ves Shorts un momento, es normal — <strong>desaparecen en menos de un segundo</strong> mientras el bloqueador actúa.
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-text">YOUTUBE SIN SHORTS v1.0 • MODO ENFOQUE</div>
+  </div>
+
+</body>
+</html>
